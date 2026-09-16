@@ -24,7 +24,7 @@ npm run build
 npm run preview
 ```
 
-GitHub Pages is published from `main` via `.github/workflows/pages.yml`.
+GitHub Pages is published from `main` via `.github/workflows/pages.yml` (GitHub Actions as the Pages source).
 
 ## Stack
 

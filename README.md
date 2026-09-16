@@ -24,7 +24,9 @@ npm run build
 npm run preview
 ```
 
-GitHub Pages is published from `main` via `.github/workflows/pages.yml` (GitHub Actions as the Pages source).
+GitHub Pages is published from `main` via `.github/workflows/pages.yml` to the `gh-pages` branch.
+
+First-time publish: **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `/` (root) → Save.**
 
 ## Stack
 

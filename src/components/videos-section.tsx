@@ -32,6 +32,8 @@ function ReelCard({
         preload="metadata"
         poster={asset(reel.poster)}
         onPlay={() => onPlay(reel.id)}
+        aria-label={loc(lang, reel.titleEn, reel.titleEs, reel.titlePt)}
+        title={loc(lang, reel.titleEn, reel.titleEs, reel.titlePt)}
         className="aspect-[9/16] w-full rounded-xl bg-ink-2 object-cover"
       >
         <source src={asset(reel.src)} type="video/mp4" />

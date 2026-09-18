@@ -85,6 +85,10 @@ if (!existsSync(indexPath) || readFileSync(indexPath).byteLength === 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sharp Studios LLC | Barbershop in Reading, PA</title>
     <meta name="description" content="Sharp Studios LLC — fades, haircuts, kids’ cuts, and beards at 157 N 5th St, Reading, PA. Book on Booksy." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://sysopx786.github.io/Sharp-Studios-Website/" />
+    <meta property="og:title" content="Sharp Studios LLC | Barbershop in Reading, PA" />
+    <meta property="og:image" content="https://sysopx786.github.io/Sharp-Studios-Website/og.jpg" />
     <link rel="icon" type="image/svg+xml" href="${base}favicon.svg" />
     ${css ? `<link rel="stylesheet" href="${base}assets/${css}" />` : ""}
   </head>

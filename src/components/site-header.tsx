@@ -11,9 +11,9 @@ const LINKS = [
   { href: "#featured", key: "navFeatured" },
   { href: "#about", key: "navAbout" },
   { href: "#barbers", key: "navBarbers" },
+  { href: "#services", key: "navServices" },
   { href: "#foundation", key: "navFoundation" },
   { href: "#week", key: "navWeek" },
-  { href: "#services", key: "navServices" },
   { href: "#gallery", key: "navGallery" },
   { href: "#videos", key: "navCuts" },
   { href: "#reviews", key: "navReviews" },
@@ -58,6 +58,56 @@ function LangFlag({ lang, className }: { lang: Lang; className?: string }) {
   return <UsFlag className={className} />;
 }
 
+function HexLangFlag({ lang }: { lang: Lang }) {
+  const clip = `lang-hex-${lang}`;
+  return (
+    <svg viewBox="0 0 32 28" className="h-[1.65rem] w-[1.9rem] shrink-0" aria-hidden>
+      <defs>
+        <clipPath id={clip}>
+          <polygon points="8,1.4 24,1.4 31.2,14 24,26.6 8,26.6 0.8,14" />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${clip})`}>
+        {lang === "es" ? (
+          <>
+            <rect width="32" height="28" fill="#c60b1e" />
+            <rect y="7" width="32" height="14" fill="#ffc400" />
+          </>
+        ) : lang === "pt" ? (
+          <>
+            <rect width="32" height="28" fill="#009b3a" />
+            <polygon points="16,2.2 29.4,14 16,25.8 2.6,14" fill="#fedf00" />
+            <circle cx="16" cy="14" r="5.4" fill="#002776" />
+            <path
+              d="M11.2 14.7c1.6 1.2 3.9 1.8 4.8 1.8 1.6 0 3.6-.75 4.8-1.8"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+            />
+          </>
+        ) : (
+          <>
+            <rect width="32" height="28" fill="#bf0a30" />
+            <rect y="3.1" width="32" height="3.1" fill="#fff" />
+            <rect y="9.3" width="32" height="3.1" fill="#fff" />
+            <rect y="15.5" width="32" height="3.1" fill="#fff" />
+            <rect y="21.7" width="32" height="3.1" fill="#fff" />
+            <rect width="13.5" height="14.2" fill="#002868" />
+          </>
+        )}
+      </g>
+      <polygon
+        points="8,1.4 24,1.4 31.2,14 24,26.6 8,26.6 0.8,14"
+        fill="none"
+        stroke="#1a1a1a"
+        strokeWidth="0.9"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function LangCircles() {
   const { lang, setLang } = useI18n();
   const options = otherLangs(lang);
@@ -69,10 +119,10 @@ export function LangCircles() {
           type="button"
           onClick={() => setLang(option)}
           aria-label={LANG_NAME[option]}
-          className="inline-flex size-14 shrink-0 flex-col items-center justify-center gap-0.5 rounded-full bg-signal text-ink shadow-sm hover:bg-[#ffd34d]"
+          className="inline-flex size-[4.35rem] shrink-0 flex-col items-center justify-center gap-1 rounded-full bg-pop text-ink hover:bg-[#fff45a]"
         >
-          <LangFlag lang={option} className="h-3.5 w-[1.05rem]" />
-          <span className="text-[0.65rem] font-bold uppercase leading-none tracking-wide">
+          <HexLangFlag lang={option} />
+          <span className="text-[0.72rem] font-extrabold uppercase leading-none tracking-wide">
             {LANG_SHORT[option]}
           </span>
         </button>

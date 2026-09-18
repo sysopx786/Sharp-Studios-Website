@@ -166,3 +166,11 @@
     transform: scale(0.72);
   }
 }
+
+.lang-hex-wrap {
+  filter: drop-shadow(0 0 0.7px rgb(0 0 0 / 0.55));
+}
+
+.lang-hex {
+  clip-path: polygon(22% 8%, 78% 8%, 100% 50%, 78% 92%, 22% 92%, 0% 50%);
+}

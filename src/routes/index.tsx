@@ -19,7 +19,7 @@ function Home() {
   return (
     <div
       id="top"
-      className="min-h-dvh bg-ink text-paper pb-[calc(6.5rem+env(safe-area-inset-bottom))]"
+      className="min-h-dvh bg-ink text-paper pb-[calc(7.5rem+env(safe-area-inset-bottom))]"
     >
       <SiteHeader />
       <HeroSection />
@@ -28,9 +28,9 @@ function Home() {
       <main id="main">
         <AboutSection />
         <BarbersSection />
+        <ServicesSection />
         <ReviewsFoundation />
         <WeekAt603 />
-        <ServicesSection />
         <GallerySection />
         <VideosSection />
         <ReviewsSection />

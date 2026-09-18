@@ -117,6 +117,8 @@ export function BarbersSection() {
               <img
                 src={asset(barber.src)}
                 alt={loc(lang, barber.alt.en, barber.alt.es, barber.alt.pt)}
+                width={800}
+                height={1000}
                 loading="lazy"
                 decoding="async"
                 className={`aspect-[4/5] w-full object-cover ${barber.pos}`}

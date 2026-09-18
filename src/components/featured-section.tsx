@@ -8,11 +8,13 @@ export function FeaturedSection() {
   return (
     <section id="featured" className="scroll-mt-32 bg-ink text-paper">
       <div className="mx-auto w-full max-w-[360px] px-4 py-12 sm:py-16">
+        <h2 className="sr-only">{t.featuredCut}</h2>
         <video
           controls
           playsInline
           preload="metadata"
           poster={asset(FEATURED_VIDEO.poster)}
+          aria-label={t.featuredCut}
           className="aspect-[9/16] w-full rounded-xl bg-ink-2 object-cover"
         >
           <source src={asset(FEATURED_VIDEO.src)} type="video/mp4" />

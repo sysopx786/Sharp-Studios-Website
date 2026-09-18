@@ -12,15 +12,15 @@ export function HeroSection() {
       <h1 className="sr-only">
         {t.heroTitle} {t.heroSub}
       </h1>
-      <div className="mx-auto max-w-xl px-4 sm:max-w-2xl sm:px-6">
+      <div className="mx-auto max-w-2xl px-4 sm:max-w-3xl sm:px-6">
         <img
-          src={asset("/images/logo-crest.jpg")}
-          alt="Sharp Studios LLC"
-          width={510}
-          height={510}
+          src={asset("/images/hero-logo.jpg")}
+          alt="Sharp Studios Barbershop"
+          width={1024}
+          height={1024}
           fetchPriority="high"
           decoding="async"
-          className="mx-auto h-auto w-full max-w-[280px] rounded-2xl bg-white object-contain p-2 shadow-lg sm:max-w-[340px] md:max-w-[400px]"
+          className="mx-auto h-auto w-full rounded-2xl object-cover shadow-lg"
         />
       </div>
       <div className="mx-auto max-w-6xl px-4 pt-8 pb-10 sm:px-6 sm:pt-10 sm:pb-14">

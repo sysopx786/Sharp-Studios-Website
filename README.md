@@ -26,7 +26,9 @@ npm run preview
 
 GitHub Pages is published from `main` via `.github/workflows/pages.yml` to the `gh-pages` branch.
 
-First-time publish: **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `/` (root) → Save.**
+First-time publish: **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `/` (root) → Save.** HTTPS is on by default.
+
+After the live site is up, add the property in [Google Search Console](https://search.google.com/search-console) and submit `https://sysopx786.github.io/Sharp-Studios-Website/sitemap.xml`.
 
 ## Stack
 

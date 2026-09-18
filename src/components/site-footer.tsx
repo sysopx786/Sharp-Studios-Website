@@ -78,6 +78,8 @@ export function SiteFooter() {
             <img
               src={asset("/images/reels/reel-entrance.jpg")}
               alt={loc(lang, "Sharp Studios storefront", "Fachada de Sharp Studios", "Fachada da Sharp Studios")}
+              width={720}
+              height={1280}
               loading="lazy"
               decoding="async"
               className="aspect-[16/10] w-full rounded-xl object-cover object-top"

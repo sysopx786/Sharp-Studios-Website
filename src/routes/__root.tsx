@@ -11,6 +11,7 @@ const OG_IMAGE = `${SITE_URL}og.jpg`;
 const TITLE = "Sharp Studios LLC | Barbershop in Reading, PA";
 const DESCRIPTION =
   "Walk-in barbershop at 157 N 5th St, Reading, PA. Fades, haircuts, kids’ cuts, beard trims, and premium sits. Closed Sunday and Tuesday. Book on Booksy. Se habla español.";
+const OG_ALT = "Sharp Studios Barbershop — the crew and logo at 157 N 5th St, Reading, PA";
 
 const LANG_BOOTSTRAP = `(function(){try{var k=${JSON.stringify(STORAGE_KEY)};var l=localStorage.getItem(k);if(!l){var m=document.cookie.match(new RegExp("(?:^|; )"+k+"=([^;]*)"));l=m?decodeURIComponent(m[1]):"";}if(l==="es"||l==="en"||l==="pt"){document.documentElement.lang=l==="pt"?"pt-BR":l;document.documentElement.setAttribute("data-lang",l);}}catch(e){}})();`;
 
@@ -19,10 +20,10 @@ const LOCAL_BUSINESS_JSONLD = {
   "@type": "Barbershop",
   name: SHOP.name,
   alternateName: SHOP.shortName,
-  url: SHOP.mapsUrl,
+  url: SITE_URL,
   telephone: SHOP.phoneTel,
-  image: [OG_IMAGE, `${SITE_URL}images/reels/reel-entrance.jpg`],
-  logo: `${SITE_URL}images/logo-crest.jpg`,
+  image: [OG_IMAGE, `${SITE_URL}images/hero-logo.jpg`],
+  logo: `${SITE_URL}images/hero-logo.jpg`,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -57,7 +58,8 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index, follow" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "googlebot", content: "index, follow" },
       { name: "author", content: SHOP.name },
       { name: "geo.region", content: "US-PA" },
       { name: "geo.placename", content: "Reading" },
@@ -72,13 +74,25 @@ export const Route = createRootRoute({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE_URL },
       { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:secure_url", content: OG_IMAGE },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: OG_ALT },
+      { property: "og:locale:alternate", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
       { name: "twitter:image", content: OG_IMAGE },
+      { name: "twitter:image:alt", content: OG_ALT },
     ],
     links: [
       { rel: "canonical", href: SITE_URL },
+      { rel: "sitemap", type: "application/xml", href: `${SITE_URL}sitemap.xml` },
+      { rel: "alternate", hrefLang: "x-default", href: SITE_URL },
+      { rel: "alternate", hrefLang: "en", href: SITE_URL },
+      { rel: "alternate", hrefLang: "es", href: SITE_URL },
+      { rel: "alternate", hrefLang: "pt", href: SITE_URL },
       { rel: "icon", type: "image/svg+xml", href: asset("/favicon.svg") },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: asset("/__grok/manifest.webmanifest") },
@@ -99,6 +113,18 @@ export const Route = createRootRoute({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSONLD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: SHOP.name,
+              url: SITE_URL,
+              inLanguage: ["en", "es", "pt"],
+            }),
+          }}
         />
       </head>
       <body>

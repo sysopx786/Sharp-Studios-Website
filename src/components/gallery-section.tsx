@@ -60,6 +60,8 @@ export function GallerySection() {
                   <img
                     src={asset(img.src)}
                     alt={alt}
+                    width={382}
+                    height={510}
                     loading="lazy"
                     decoding="async"
                     className="aspect-[3/4] size-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.03]"

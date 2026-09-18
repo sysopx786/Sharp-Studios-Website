@@ -112,22 +112,18 @@
 }
 
 .booksy-flash {
-  animation: booksy-flash 0.95s ease-in-out infinite;
+  animation: booksy-flash 1.8s ease-in-out infinite;
 }
 
 @keyframes booksy-flash {
   0%,
   100% {
-    box-shadow:
-      0 0 0 0 rgb(255 225 53 / 0.95),
-      0 0 22px rgb(255 225 53 / 0.55);
+    box-shadow: 0 0 0 0 rgb(237 204 88 / 0.35);
     filter: brightness(1);
   }
   50% {
-    box-shadow:
-      0 0 0 16px rgb(255 225 53 / 0),
-      0 0 34px rgb(255 225 53 / 0.9);
-    filter: brightness(1.18);
+    box-shadow: 0 0 0 8px rgb(237 204 88 / 0);
+    filter: brightness(1.06);
   }
 }
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
-import { BarberPole } from "@/components/barber-pole";
 import { GoogleG, GoogleStars } from "@/components/brand-marks";
+import { BarberPole } from "@/components/barber-pole";
 import { SHOP, getShopStatus } from "@/lib/shop";
+import { useScrolledFromTop } from "@/lib/scroll-top";
 import { LANG_NAME, LANG_SHORT, otherLangs, useI18n, type Lang } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +62,7 @@ function LangFlag({ lang, className }: { lang: Lang; className?: string }) {
 function HexLangFlag({ lang }: { lang: Lang }) {
   const clip = `lang-hex-${lang}`;
   return (
-    <svg viewBox="0 0 32 28" className="h-[1.65rem] w-[1.9rem] shrink-0" aria-hidden>
+    <svg viewBox="0 0 32 28" className="h-6 w-7 shrink-0" aria-hidden>
       <defs>
         <clipPath id={clip}>
           <polygon points="8,1.4 24,1.4 31.2,14 24,26.6 8,26.6 0.8,14" />
@@ -119,10 +120,10 @@ export function LangCircles() {
           type="button"
           onClick={() => setLang(option)}
           aria-label={LANG_NAME[option]}
-          className="inline-flex size-[4.35rem] shrink-0 flex-col items-center justify-center gap-1 rounded-full bg-pop text-ink hover:bg-[#fff45a]"
+          className="inline-flex size-[3.75rem] shrink-0 flex-col items-center justify-center gap-0.5 rounded-full bg-signal text-ink shadow-[0_0_0_2px_rgb(228_196_106_/_0.45)] hover:bg-[#ffd34d]"
         >
           <HexLangFlag lang={option} />
-          <span className="text-[0.72rem] font-extrabold uppercase leading-none tracking-wide">
+          <span className="text-[0.65rem] font-extrabold uppercase leading-none tracking-wide">
             {LANG_SHORT[option]}
           </span>
         </button>
@@ -184,14 +185,14 @@ export function BooksyFlash({
       rel="noreferrer"
       onClick={onClick}
       className={cn(
-        "booksy-flash inline-flex min-h-11 shrink-0 flex-col items-center justify-center rounded-xl bg-pop px-2.5 py-1 text-center text-ink hover:bg-[#fff45a] sm:min-h-14 sm:px-4",
+        "booksy-flash inline-flex h-11 w-auto shrink-0 flex-col items-center justify-center rounded-lg bg-[#edcc58] px-2.5 py-0.5 text-center text-ink hover:bg-[#f3d56a]",
         className,
       )}
     >
-      <span className="text-[0.75rem] font-black uppercase leading-tight tracking-wide sm:text-sm sm:tracking-[0.12em]">
+      <span className="text-[0.7rem] font-black uppercase leading-tight tracking-wide">
         {t.heroBook}
       </span>
-      <span className="text-[0.55rem] font-bold uppercase leading-tight tracking-wide text-ink/80 sm:text-[0.65rem]">
+      <span className="text-[0.5rem] font-bold uppercase leading-tight tracking-wide text-ink/80">
         {t.bookHint}
       </span>
     </a>
@@ -212,7 +213,7 @@ function StatusTablet({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex h-11 min-w-[13.5rem] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border-2 px-3 sm:h-14 sm:min-w-[20rem] sm:flex-none sm:gap-2.5 sm:rounded-xl sm:px-5",
+        "inline-flex h-11 min-w-0 items-center justify-center gap-1 whitespace-nowrap rounded-lg border-2 px-2 sm:gap-2 sm:px-3",
         status.open
           ? "border-signal bg-signal/25 text-paper"
           : "status-flash border-signal bg-signal text-ink",
@@ -240,10 +241,15 @@ export function SiteHeader() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const collapsed = useScrolledFromTop();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (collapsed) setOpen(false);
+  }, [collapsed]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -262,7 +268,10 @@ export function SiteHeader() {
   const menuBtn = (
     <button
       type="button"
-      className="relative z-[92] inline-flex size-11 shrink-0 items-center justify-center rounded-md text-paper md:size-14"
+      className={cn(
+        "relative z-[92] col-start-2 row-start-1 inline-flex size-11 shrink-0 items-center justify-center rounded-md text-paper md:order-last md:size-14",
+        collapsed && "hidden",
+      )}
       onClick={() => setOpen((v) => !v)}
       aria-expanded={open}
       aria-controls="site-menu"
@@ -286,7 +295,7 @@ export function SiteHeader() {
         aria-label={t.closeMenu}
         onClick={closeMenu}
       />
-      <div className="absolute inset-x-0 top-[4.15rem] max-h-[min(85dvh,44rem)] overflow-y-auto border-b border-line bg-ink px-4 py-5 shadow-2xl md:top-24 md:px-6">
+      <div className="absolute inset-x-0 top-[7.25rem] max-h-[min(85dvh,44rem)] overflow-y-auto border-b border-line bg-ink px-4 py-5 shadow-2xl md:top-24 md:px-6">
         <nav className="mx-auto flex max-w-6xl flex-col gap-1" aria-label="Menu">
           <a
             href="#top"
@@ -329,8 +338,19 @@ export function SiteHeader() {
       >
         {t.skip}
       </a>
-      <div className="relative z-[91] mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:px-6 md:h-24 md:gap-3 md:py-0">
-        <a href="#top" className="flex min-w-0 shrink items-center gap-2 text-paper md:gap-2.5">
+      <div
+        className={cn(
+          "relative z-[91] mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1.5 px-3 py-2 md:flex md:h-24 md:gap-3 md:px-6 md:py-0",
+          collapsed && "flex h-auto py-1.5 md:h-auto md:py-2",
+        )}
+      >
+        <a
+          href="#top"
+          className={cn(
+            "flex min-w-0 items-center gap-2 text-paper md:gap-2.5",
+            collapsed && "hidden",
+          )}
+        >
           <BarberPole height={36} />
           <span className="leading-none">
             <span className="font-display block truncate text-[1.1rem] font-semibold uppercase tracking-[0.06em] sm:text-[1.5rem] sm:tracking-[0.08em]">
@@ -341,10 +361,26 @@ export function SiteHeader() {
             </span>
           </span>
         </a>
-        <div className="ml-auto flex min-w-0 items-center gap-2 md:gap-2.5">
-          <LangChip full className="hidden md:inline-flex" />
-          <StatusTablet />
-          {menuBtn}
+        {menuBtn}
+        <div
+          className={cn(
+            "col-span-2 flex items-stretch gap-2 md:ml-auto md:items-center",
+            collapsed && "w-full",
+          )}
+        >
+          <LangChip full className={cn("hidden md:inline-flex", collapsed && "md:hidden")} />
+          <BooksyFlash
+            className={cn(
+              "h-11 min-w-0 flex-1 md:h-14 md:w-auto md:max-w-[9.5rem] md:flex-none md:px-3",
+              collapsed && "h-12 w-full max-w-none flex-none",
+            )}
+          />
+          <StatusTablet
+            className={cn(
+              "min-w-0 flex-[1.35] md:h-14 md:min-w-[20rem] md:flex-none md:rounded-xl md:px-5",
+              collapsed && "hidden",
+            )}
+          />
         </div>
       </div>
       {mounted ? createPortal(menu, document.body) : null}

@@ -8,7 +8,7 @@ export function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className="bg-ink pt-[5.5rem] text-paper md:pt-32">
+    <section className="bg-ink pt-[7.5rem] text-paper md:pt-32">
       <h1 className="sr-only">
         {t.heroTitle} {t.heroSub}
       </h1>

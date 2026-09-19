@@ -6,7 +6,7 @@ import { openingHoursJsonLd, SHOP } from "@/lib/shop";
 import { asset } from "@/lib/utils";
 import appCss from "../styles.css?url";
 
-const SITE_URL = "https://sysopx786.github.io/Sharp-Studios-Website/";
+const SITE_URL = "https://sysopx786.github.io/sharp-studios-website/";
 const OG_IMAGE = `${SITE_URL}og.jpg`;
 const TITLE = "Sharp Studios LLC | Barbershop in Reading, PA";
 const DESCRIPTION =

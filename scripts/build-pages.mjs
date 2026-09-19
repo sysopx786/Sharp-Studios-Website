@@ -75,7 +75,7 @@ if (!existsSync(indexPath) || readFileSync(indexPath).byteLength === 0) {
     console.error("Pages build did not emit a client bundle.");
     process.exit(1);
   }
-  const base = "/Sharp-Studios-Website/";
+  const base = "/sharp-studios-website/";
   writeFileSync(
     indexPath,
     `<!doctype html>
@@ -86,9 +86,9 @@ if (!existsSync(indexPath) || readFileSync(indexPath).byteLength === 0) {
     <title>Sharp Studios LLC | Barbershop in Reading, PA</title>
     <meta name="description" content="Sharp Studios LLC — fades, haircuts, kids’ cuts, and beards at 157 N 5th St, Reading, PA. Book on Booksy." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://sysopx786.github.io/Sharp-Studios-Website/" />
+    <link rel="canonical" href="https://sysopx786.github.io/sharp-studios-website/" />
     <meta property="og:title" content="Sharp Studios LLC | Barbershop in Reading, PA" />
-    <meta property="og:image" content="https://sysopx786.github.io/Sharp-Studios-Website/og.jpg" />
+    <meta property="og:image" content="https://sysopx786.github.io/sharp-studios-website/og.jpg" />
     <link rel="icon" type="image/svg+xml" href="${base}favicon.svg" />
     ${css ? `<link rel="stylesheet" href="${base}assets/${css}" />` : ""}
   </head>

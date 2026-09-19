@@ -2,18 +2,9 @@
 
 ## Public website
 
-**https://sysopx786.github.io/sharp-studios-website**
+**https://sysopx786.github.io/sharp-studios-website/**
 
-Also: [https://sysopx786.github.io/Sharp-Studios-Website/](https://sysopx786.github.io/Sharp-Studios-Website/)
-
-If that link is a **404**, Pages is not on yet. Logged in as **sysopx786**, open this and save once:
-
-**[Turn on GitHub Pages](https://github.com/sysopx786/Sharp-Studios-Website/settings/pages)**  
-Source: **Deploy from a branch** → branch **`gh-pages`** → folder **`/ (root)`** → **Save**.
-
-The repo is already **public**. The site files are already on the `gh-pages` branch.
-
----
+Repo: [https://github.com/sysopx786/sharp-studios-website](https://github.com/sysopx786/sharp-studios-website)
 
 Website for **Sharp Studios LLC** at 157 N 5th St, Reading, PA.
 
@@ -39,7 +30,7 @@ npm run preview
 
 GitHub Pages is published from `main` via `.github/workflows/pages.yml` to the `gh-pages` branch.
 
-After the live site is up, add the property in [Google Search Console](https://search.google.com/search-console) and submit `https://sysopx786.github.io/Sharp-Studios-Website/sitemap.xml`.
+After the live site is up, add the property in [Google Search Console](https://search.google.com/search-console) and submit `https://sysopx786.github.io/sharp-studios-website/sitemap.xml`.
 
 ## Stack
 
